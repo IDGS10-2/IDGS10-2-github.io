@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>    <title>To do List!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <title>Text to Speech (Anonymous Online Tool)</title>
 </head>
 <body>
-    <h1><span class="styling">TODO</span>List</h1>
-    <div class="input_div">
-        <input type="text" class="input" placeholder="What Do You Want To Do?">
-        <button class="addButton"><i class="fas fa-plus"></i></button>
-    </div>
-    <div class="container">
-    </div>
-    <script src="main.js"></script>
+    <input class="c-checkbox" type="checkbox" id="checkbox">
+        <div class="c-formContainer">
+            <form class="c-form" action="#">
+                <input class="c-form__input" name="text" placeholder="Escribe algo..." type="email" required>
+                <label class="c-form__buttonLabel" for="checkbox">
+                <button class="c-form__button" type="button" onclick="speak()"><i class="fa fas fa-microphone"></i></button>
+                </label>
+                <label class="c-form__toggle" for="checkbox" data-title="CLICK"></label>
+            </form>
+        </div>
+        <audio src="" hidden class="speech"></audio>
+    
+    
+    
+    
+    <script>
+    function speak(){
+        var text = $('input[name=text]').val();
+        text = encodeURIComponent(text);
+        aux = encodeURIComponent("Tu texto es: ");
+        
+        // BR = Anonymous Voice.
+        // EN = Female Voice.
+        var url = "https://audio1.spanishdict.com/audio?lang=es&text="+aux+text;
+        $("audio").attr('src',url).get(0).play();
+    }
+    </script>
 </body>
 </html>
